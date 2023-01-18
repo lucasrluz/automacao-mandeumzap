@@ -8,6 +8,8 @@ packages = [{include = "automacao_mandeumzap"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+playwright = "^1.29.1"
+python-dotenv = "^0.21.0"
 
 
 [build-system]
