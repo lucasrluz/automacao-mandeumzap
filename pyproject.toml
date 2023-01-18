@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "automacao-mandeumzap"
+version = "0.1.0"
+description = ""
+authors = ["lucasrluz <lucasr.luzbr@gmail.com>"]
+readme = "README.md"
+packages = [{include = "automacao_mandeumzap"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
