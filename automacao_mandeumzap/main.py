@@ -1,6 +1,6 @@
 import asyncio
 from playwright.async_api import async_playwright, Playwright, Page
-from utils.elements_identifiers import (
+from automacao_mandeumzap.utils.elements_identifiers import (
     LOGIN_BUTTON,
     LOGIN_PASSWORD,
     LOGIN_USERNAME,
@@ -21,7 +21,7 @@ async def login(page: Page):
 
 async def run(playwright: Playwright):
     chromium = playwright.chromium
-    browser = await chromium.launch(headless=False)
+    browser = await chromium.launch(headless=False, channel='chrome')
     page = await browser.new_page()
     await page.goto('https://agilizzapromotora.mandeumzap.com.br/login')
     
