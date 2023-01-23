@@ -14,7 +14,7 @@ from dotenv import load_dotenv, dotenv_values
 
 load_dotenv()
 
-env = dotenv_values()
+env = dotenv_values('.env')
 
 def login(page: Page):
     page.locator(LOGIN_USERNAME).type(env['USERNAME'])
@@ -23,7 +23,7 @@ def login(page: Page):
 
 def run(playwright: Playwright):
     chromium = playwright.chromium
-    browser = chromium.launch(headless=False, channel='chrome')
+    browser = chromium.launch(headless=False)
     page = browser.new_page()
     page.goto('https://agilizzapromotora.mandeumzap.com.br/login')
     
