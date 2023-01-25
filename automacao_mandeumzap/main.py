@@ -6,7 +6,11 @@ from automacao_mandeumzap.utils.elements_identifiers import (
     NOW,
     TICKET_REPORT,
     EXIBIR_FILTROS_BUTTON,
-    NOME_FILTER
+    NOME_FILTER,
+    EXIBIR_FILTROS_ESTATISTICAS_BUTTON,
+    INIT_DATE_FILTER,
+    END_DATE_FILTER,
+    APLICAR_FILTRO_BUTTON
 )
 
 import time
@@ -42,8 +46,20 @@ def run(playwright: Playwright):
         time.sleep(10)
         page.evaluate('(TICKET_REPORT) => document.querySelector(TICKET_REPORT).click()', TICKET_REPORT)        
 
+        page.evaluate('(EXIBIR_FILTROS_ESTATISTICAS_BUTTON) => document.querySelector(EXIBIR_FILTROS_ESTATISTICAS_BUTTON).click()', EXIBIR_FILTROS_ESTATISTICAS_BUTTON)
+
+        init_date = page.evaluate('(INIT_DATE_FILTER) => document.querySelector(INIT_DATE_FILTER).value', INIT_DATE_FILTER)
+
+        end_date = page.evaluate('(END_DATE_FILTER) => document.querySelector(END_DATE_FILTER).value', END_DATE_FILTER)
+
+        init_date_formated = end_date[0:2] + init_date[2:16]
+
+        time.sleep(2)
+        page.type(INIT_DATE_FILTER, init_date_formated)
+        page.click(APLICAR_FILTRO_BUTTON)
+
         time.sleep(1)
-        page.mouse.wheel(300, 300)
+        page.mouse.wheel(500, 500)
 
         time.sleep(9)
 
