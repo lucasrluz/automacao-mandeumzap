@@ -1,5 +1,5 @@
 from playwright.sync_api import Playwright, sync_playwright, Page
-from automacao_mandeumzap.utils.elements_identifiers import (
+from utils.elements_identifiers import (
     LOGIN_BUTTON,
     LOGIN_PASSWORD,
     LOGIN_USERNAME,
@@ -52,7 +52,7 @@ def run(playwright: Playwright):
 
         end_date = page.evaluate('(END_DATE_FILTER) => document.querySelector(END_DATE_FILTER).value', END_DATE_FILTER)
 
-        init_date_formated = end_date[0:2] + init_date[2:16]
+        init_date_formated = end_date[0:5] + init_date[5:16]
 
         time.sleep(2)
         page.type(INIT_DATE_FILTER, init_date_formated)
